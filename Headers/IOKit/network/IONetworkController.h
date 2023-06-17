@@ -1671,9 +1671,23 @@ public:
     OSMetaClassDeclareReservedUsed( IONetworkController,  5);
 
 #else
-
     OSMetaClassDeclareReservedUnused( IONetworkController,  5);
 
+#endif
+
+#if __MAC_OS_X_VERSION_MIN_REQUIRED >= __MAC_10_14
+    virtual mbuf_t allocatePacketNoWait(UInt32 size);
+    
+    OSMetaClassDeclareReservedUsed( IONetworkController,  6);
+    
+    virtual IOReturn setHardwareAssists(UInt32, UInt32);
+    
+    OSMetaClassDeclareReservedUsed( IONetworkController,  7);
+    
+#else
+    OSMetaClassDeclareReservedUnused( IONetworkController,  6);
+    OSMetaClassDeclareReservedUnused( IONetworkController,  7);
+    
 #endif
 
 #else   /* !__PRIVATE_SPI__ */
@@ -1681,9 +1695,10 @@ public:
     OSMetaClassDeclareReservedUnused( IONetworkController,  3);
     OSMetaClassDeclareReservedUnused( IONetworkController,  4);
     OSMetaClassDeclareReservedUnused( IONetworkController,  5);
-#endif  /* !__PRIVATE_SPI__ */
     OSMetaClassDeclareReservedUnused( IONetworkController,  6);
     OSMetaClassDeclareReservedUnused( IONetworkController,  7);
+
+#endif  /* !__PRIVATE_SPI__ */
     OSMetaClassDeclareReservedUnused( IONetworkController,  8);
     OSMetaClassDeclareReservedUnused( IONetworkController,  9);
     OSMetaClassDeclareReservedUnused( IONetworkController, 10);
